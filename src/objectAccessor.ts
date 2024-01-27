@@ -14,4 +14,15 @@
  */
 export function createObjectAccessor<T>(obj: T) {
     // 請在此處寫下你的程式碼
+    const newObj: T = obj;
+    const get = (name: keyof T) => {
+        return newObj[name];
+    }
+    const set = (name: keyof T, val: T[typeof name]): void => {
+        newObj[name] = val;
+    }
+    return {
+        get,
+        set,
+    }
 }
